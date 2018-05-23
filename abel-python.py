@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Dec 10 13:24:46 2017
-
-"""
-
+#Author: XiaoTao Wang
+#
 import sys, time
 from collections import Counter
 
