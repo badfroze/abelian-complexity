@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-#Author: XiaoTao Wang
 #
 import sys, time
 from collections import Counter
-
+#
 def abel(seq):
-    
+#  
     pool = []
     for n in range(1, len(seq)+1):
         tmp = []
@@ -22,9 +21,9 @@ def abel(seq):
         pool.append(len(Set))
     
     return pool
-
+#
 def read_and_write(infile, outfile):
-    
+#  
     with open(outfile, 'wb') as output:
         with open(infile, 'rb') as source:
             for line in source:
@@ -32,9 +31,9 @@ def read_and_write(infile, outfile):
                 if parse and (not parse.startswith('>')):
                     Ids = abel(parse)
                     output.write('\t'.join(map(str, Ids))+'\n')
-
+#
 if __name__ == '__main__':
-    
+#  
     # start = time.time()
     infile = sys.argv[1]
     outfile = sys.argv[2]
