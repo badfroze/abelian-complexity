@@ -40,3 +40,4 @@ if __name__ == '__main__':
     read_and_write(infile, outfile)
     # elapse = time.time() - start
     #print 'Time elapsed: %s' % elapse
+#
