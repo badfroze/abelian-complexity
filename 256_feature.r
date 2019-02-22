@@ -1,3 +1,7 @@
+argv <- commandArgs(TRUE)
+input <- as.numeric(argv[1])
+output <- as.numeric(argv[2])
+#256 feature
 unc = c('A','T','C','G')
 tetranuc = data.frame(0)
 for (x in 1:4){
@@ -16,13 +20,62 @@ for (x in 1:4){
 	}
 }
 for (w in 1:256){     
-	tetranuc[w,2] = w
+	tetranuc[w,2] = 0
 }
-pa = read.table('parameter_110.txt')
-load('an.Rdata')
-##col1 feature number col2 acc col3 auc col4 mcc
-sx = pa[order(pa[,3]),]
-num = sx[1:100,1]
-ab = abel_num[num[which(num <= 209)]]
-n4 = num[which(num > 209)] - 209
-tt = tetranuc[n4,]
+#
+#
+#list.files
+library(stringr)
+# name = list.files()
+# for (n in 1:length(name)){
+	# file.name = name[n]
+sequ = read.table(input)
+for (ii in 1:nrow(sequ)){
+	mat = tetranuc
+	fasta = as.character(sequ[ii,])
+	fh = substr(fasta,1,1)
+	if (fh != '>'){
+		fasta = toupper(as.character(sequ[ii,]))
+		#256
+		for (j in 1:(nchar(fasta) - 3)){
+			temp = substr(fasta,j,(j + 3))
+			lo = which(mat[,1] == temp)
+			mat[lo,2] = as.numeric(mat[lo,2]) + 1
+		}
+		mat = mat[,2]/(nchar(fasta) - 3)
+		#8
+		aa = str_locate_all(fasta,'A')
+		aa = nrow(aa[[1]])
+		tt = str_locate_all(fasta,'T')
+		tt = nrow(tt[[1]])
+		cc = str_locate_all(fasta,'C')
+		cc = nrow(cc[[1]])
+		gg = str_locate_all(fasta,'G')
+		gg = nrow(gg[[1]])
+		cg = (cc + gg)/nchar(fasta)
+		# cgi = cg/(cc*gg*nchar(fasta))
+		# if (cc == 0){
+			# cgi = 0
+		# }
+		# if (gg == 0){
+			# cgi = 0
+		# }
+		m1 = abs(cc - gg)/nchar(fasta)
+		m2 = abs(aa - tt)/nchar(fasta)
+		m3 = aa/tt
+		if (tt == 0){
+			m3 = 0
+		}
+		m4 = cc/gg
+		if (gg == 0){
+			m4 = 0
+		}
+		m5 = cc*gg/nchar(fasta)
+		m6 = aa*tt/nchar(fasta)
+		m = c(cg,m1,m2,m3,m4,m5,m6)
+		#cbind
+		final = t(c(mat,m))
+		write.table(final, file = output, append = T, quote = F, row.names = F, col.names = F)
+	}
+}
+# }
