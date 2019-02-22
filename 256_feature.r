@@ -1,6 +1,6 @@
 argv <- commandArgs(TRUE)
-input <- as.numeric(argv[1])
-output <- as.numeric(argv[2])
+input <- as.character(argv[1])
+output <- as.character(argv[2])
 #256 feature
 unc = c('A','T','C','G')
 tetranuc = data.frame(0)
