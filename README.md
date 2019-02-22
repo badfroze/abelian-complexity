@@ -20,7 +20,7 @@ Rscript abel.r start end
 Rscript 256_feature.r 
 ```
 
-Run support vector machine: 
+Run support vector machine: run this machine learning tools by libsvm and output the parameters
 ```
 Rscript main.r ratio pos.file neg.file
 #ratio refer to the ratio between positive sample and negative sample
