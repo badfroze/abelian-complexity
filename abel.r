@@ -1,8 +1,10 @@
 argv <- commandArgs(TRUE)
 start <- as.numeric(argv[1])
 end <- as.numeric(argv[2])
+input <- as.character(argv[3])
+output <- as.character(argv[4])
 # i = start
-fasta = read.table('positive_500bp.fasta')
+fasta = read.table(input)
 for (i in start:end){
 	temp = as.character(fasta[i,1])
 	cd = nchar(temp)
@@ -40,7 +42,7 @@ for (i in start:end){
 			counting = nrow(mat)
 			abel[j] = counting
 		}
-		write.table(t(abel),file = paste0('abel_r/abel_positive_500bp_',start,'.txt'),append = T,quote = F,row.names = F,col.names = F)
+		write.table(t(abel),file = output,append = T,quote = F,row.names = F,col.names = F)
 	}
 	else{
 		next
