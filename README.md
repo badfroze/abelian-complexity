@@ -15,9 +15,9 @@ There are 2 main functions in this work: extract hybrid abelian-complexity featu
 
 Extract hybrid abelian-complexity features: getting abelian-complexity features and tetra-nucleotide frequency features from a fasta file  
 ```
-Rscript abel.r start end 
+Rscript abel.r start end input output
 #start and end refer to the responding fasta sequence position and the input file is fasta format
-Rscript 256_feature.r 
+Rscript 256_feature.r input output
 ```
 
 Run support vector machine: run this machine learning tools by libsvm and output the parameters
