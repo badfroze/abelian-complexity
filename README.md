@@ -1,26 +1,26 @@
-hybrid abelian-complexity features extraction and implementation SVM
+Hybrid abelian-complexity features extraction and implementation SVM
 -------------------------------------------------------------------------------
 
 # dependencies #
 
 * Libsvm tools for linux
 
-_the library for support vector machine can be download at site https://www.csie.ntu.edu.tw/~cjlin/libsvm/_
+_The library for support vector machine can be download at site https://www.csie.ntu.edu.tw/~cjlin/libsvm/_
 
 # usage #
 
 ## use commands ##
 
-There are 2 main functions in this work: extract hybrid abelian-complexity features and run support vector machine 
+There are 2 main functions in this work: extract hybrid abelian-complexity features and run support vector machine.
 
-extract hybrid abelian-complexity features: getting abelian-complexity features and tetra-nucleotide frequency features from a fasta file  
+Extract hybrid abelian-complexity features: getting abelian-complexity features and tetra-nucleotide frequency features from a fasta file  
 ```
 Rscript abel.r start end 
 #start and end refer to the responding fasta sequence position
 Rscript 256_feature.r 
 ```
 
-run support vector machine: 
+Run support vector machine: 
 ```
 Rscript main.r ratio pos.file neg.file
 #ratio refer to the ratio between positive sample and negative sample
